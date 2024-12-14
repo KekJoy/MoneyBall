@@ -1,74 +1,96 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Link } from 'expo-router';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import {SafeAreaView, ScrollView, Text, View, Button, Image} from 'react-native';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <SafeAreaView style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        <Text style={styles.title}>Добро пожаловать в WoolWizard!</Text>
+        <Image source={require('../../assets/4da48.webp')} resizeMode={'contain'} style={{height: 200, width: '100%' }}/>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Используйте калькуляторы:</Text>
+          <Link href="/calculatorScreen" asChild>
+            <Button title="Калькулятор пряжи" />
+          </Link>
+          <Link href="/calculatorScreen" asChild>
+            <Button title="Калькулятор выкройки" />
+          </Link>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Ваши проекты:</Text>
+          <Link href="/projectsScreen" asChild>
+            <Button title="Мой проект 1" />
+          </Link>
+          <Link href="/projectsScreen" asChild>
+            <Button title="Мой проект 2" />
+          </Link>
+        </View>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Используйте счётчик рядов:</Text>
+          <Link href='/rowCounter' asChild>
+            <Button title="Открыть счётчик рядов" />
+          </Link>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
+import { StyleSheet } from 'react-native';
+import RowCounterScreen from "@/app/(tabs)/rowCounter";
+
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    backgroundColor: '#f4f4f4',  // Светлый фон для всего экрана
+    paddingTop: 20,  // Оставляем место для статус-бара
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  scrollViewContainer: {
+    paddingBottom: 20,  // Отступ снизу
+    paddingHorizontal: 15,  // Отступы по бокам
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#333',  // Тёмный цвет текста
+    marginVertical: 20,  // Отступ сверху и снизу
+    textAlign: 'center',
+  },
+  section: {
+    marginVertical: 15,  // Отступ между секциями
+    gap: 10
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#444',  // Немного светлее, чем основной цвет
+    marginBottom: 10,  // Отступ снизу
+  },
+  material: {
+    fontSize: 16,
+    color: '#666',  // Легкий серый цвет для материалов
+    marginBottom: 5,  // Отступ снизу
+  },
+  button: {
+    backgroundColor: '#4CAF50',  // Зеленый цвет для кнопок
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderRadius: 5,  // Закругленные углы
+    marginVertical: 10,  // Отступ между кнопками
+    alignItems: 'center',  // Выравнивание текста по центру
+  },
+  buttonText: {
+    color: '#fff',  // Белый цвет текста на кнопке
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  linkButton: {
+    backgroundColor: '#2196F3',  // Синий цвет для ссылок
   },
 });
+
+

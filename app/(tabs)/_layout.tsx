@@ -1,43 +1,62 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Stack, Tabs } from 'expo-router';
+import { View, Text } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+// import Index from "@/app/(tabs)/materials";
+import ProjectsScreen from "@/app/(tabs)/projectsScreen";
+import CalculatorScreen from "@/app/(tabs)/calculatorScreen";
+import RowCounterScreen from "@/app/(tabs)/rowCounter";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+// Импортируем экраны
+
+
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
+        headerShown: false, // скрываем заголовки на вкладках
+        tabBarStyle: {
+          backgroundColor: '#fff', // цвет фона панели вкладок
+        },
+        tabBarActiveTintColor: 'tomato', // активный цвет
+        tabBarInactiveTintColor: 'gray', // неактивный цвет
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarLabel: 'Главная',
+          tabBarIcon: ({ color }) => <Ionicons name="home-outline" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="projectsScreen"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarLabel: 'Проекты',
+          tabBarIcon: ({ color }) => <Ionicons name="briefcase-outline" size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="calculatorScreen"
+        options={{
+          tabBarLabel: 'Калькуляторы',
+          tabBarIcon: ({ color }) => <Ionicons name="calculator-outline" size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="(materials)"
+        options={{
+          headerShown: false,
+          tabBarLabel: 'Материалы',
+          tabBarIcon: ({ color }) => <Ionicons name="color-palette-outline" size={24} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="rowCounter"
+        options={{
+          tabBarLabel: 'Счетчик рядов',
+          tabBarIcon: ({ color }) => <Ionicons name="stats-chart-outline" size={24} color={color} />,
         }}
       />
     </Tabs>
