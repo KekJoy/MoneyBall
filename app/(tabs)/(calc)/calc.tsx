@@ -2,25 +2,25 @@ import React from 'react';
 import { View, Text, Button, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import {Link, useRouter} from 'expo-router';
 
-export default function MaterialScreen() {
+export default function CalcScreen() {
 
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.header}>Материалы</Text>
+        <Text style={styles.header}>Калькуляторы</Text>
         <View style={{ paddingVertical: 8 }}>
-          <Link href={'/(tabs)/(materials)/(hooks)/hooks'} asChild>
-            <Button color={'tomato'} title={'Крючки'} />
+          <Link href={'/(tabs)/(calc)/concave_curve'} asChild>
+            <Button color={'tomato'} title={'Калькулятор вогнутой кривой'} />
           </Link>
         </View>
         <View style={{ paddingVertical: 8 }}>
-          <Link href={'/(tabs)/(materials)/(needle)/needle'} asChild>
-            <Button color={'tomato'} title={'Спицы'} />
+          <Link href={'/(tabs)/(calc)/convex_curve'} asChild>
+            <Button color={'tomato'} title={'Калькулятор выпуклой кривой'} />
           </Link>
         </View>
         <View style={{ paddingVertical: 8 }}>
-          <Link href={'/(tabs)/(materials)/(yarn)/yarn'} asChild>
-            <Button color={'tomato'} title={'Пряжа'} />
+          <Link href={'/(tabs)/(calc)/materials_calc'} asChild>
+            <Button color={'tomato'} title={'Калькулятор материалов для изделия'} />
           </Link>
         </View>
       </View>

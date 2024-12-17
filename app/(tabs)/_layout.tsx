@@ -1,11 +1,5 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Stack, Tabs } from 'expo-router';
-import { View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-// import Index from "@/app/(tabs)/materials";
-import ProjectsScreen from "@/app/(tabs)/projectsScreen";
-import CalculatorScreen from "@/app/(tabs)/calculatorScreen";
-import RowCounterScreen from "@/app/(tabs)/rowCounter";
 
 // Импортируем экраны
 
@@ -31,15 +25,17 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="projectsScreen"
+        name="(projects)"
         options={{
+          headerShown: false,
           tabBarLabel: 'Проекты',
           tabBarIcon: ({ color }) => <Ionicons name="briefcase-outline" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="calculatorScreen"
+        name="(calc)"
         options={{
+          headerShown: false,
           tabBarLabel: 'Калькуляторы',
           tabBarIcon: ({ color }) => <Ionicons name="calculator-outline" size={24} color={color} />,
         }}

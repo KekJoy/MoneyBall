@@ -2,7 +2,7 @@
 
 /**
  * This script is used to reset the project to a blank state.
- * It moves the /app, /components, /hooks, /scripts, and /constants directories to /app-example and creates a new /app directory with an materials.tsx and _layout.tsx file.
+ * It moves the /app, /components, /hooks, /scripts, and /constants directories to /app-example and creates a new /app directory with an projects.tsx and _layout.tsx file.
  * You can remove the `reset-project` script from package.json and safely delete this file after running it.
  */
 
@@ -62,10 +62,10 @@ const moveDirectories = async () => {
     await fs.promises.mkdir(newAppDirPath, { recursive: true });
     console.log("\n📁 New /app directory created.");
 
-    // Create materials.tsx
-    const indexPath = path.join(newAppDirPath, "materials.tsx");
+    // Create projects.tsx
+    const indexPath = path.join(newAppDirPath, "projects.tsx");
     await fs.promises.writeFile(indexPath, indexContent);
-    console.log("📄 app/materials.tsx created.");
+    console.log("📄 app/projects.tsx created.");
 
     // Create _layout.tsx
     const layoutPath = path.join(newAppDirPath, "_layout.tsx");
@@ -74,7 +74,7 @@ const moveDirectories = async () => {
 
     console.log("\n✅ Project reset complete. Next steps:");
     console.log(
-      "1. Run `npx expo start` to start a development server.\n2. Edit app/materials.tsx to edit the main screen.\n3. Delete the /app-example directory when you're done referencing it."
+      "1. Run `npx expo start` to start a development server.\n2. Edit app/projects.tsx to edit the main screen.\n3. Delete the /app-example directory when you're done referencing it."
     );
   } catch (error) {
     console.error(`Error during script execution: ${error}`);

@@ -11,28 +11,22 @@ export default function HomeScreen() {
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Используйте калькуляторы:</Text>
-          <Link href="/calculatorScreen" asChild>
-            <Button title="Калькулятор пряжи" />
+          <Link href='/(tabs)/(calc)/concave_curve' asChild>
+            <Button color={'tomato'} title="Калькулятор вогнутой кривой" />
           </Link>
-          <Link href="/calculatorScreen" asChild>
-            <Button title="Калькулятор выкройки" />
+          <Link href="/(tabs)/(calc)/convex_curve" asChild>
+            <Button color={'tomato'} title="Калькулятор выпуклой кривой" />
+          </Link>
+          <Link href="/(tabs)/(calc)/materials_calc" asChild>
+            <Button color={'tomato'} title="Калькулятор пряжи" />
           </Link>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Ваши проекты:</Text>
-          <Link href="/projectsScreen" asChild>
-            <Button title="Мой проект 1" />
-          </Link>
-          <Link href="/projectsScreen" asChild>
-            <Button title="Мой проект 2" />
-          </Link>
-        </View>
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Используйте счётчик рядов:</Text>
           <Link href='/rowCounter' asChild>
-            <Button title="Открыть счётчик рядов" />
+            <Button color={'tomato'} title="Открыть счётчик рядов" />
           </Link>
         </View>
       </ScrollView>
